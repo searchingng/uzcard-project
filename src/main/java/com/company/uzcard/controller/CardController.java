@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -44,6 +46,11 @@ public class CardController {
     public ResponseEntity<CardDTO> getById(@PathVariable String number){
         log.debug("Card is gotten with Number: {}", number);
         return ResponseEntity.ok(cardService.getByNumber(number));
+    }
+
+    @PostMapping("/app/get")
+    public ResponseEntity<CardDTO> findByNumberAndExpDate(@RequestBody CardDTO dto){
+        return ResponseEntity.ok(cardService.findByNumberAndExpDate(dto));
     }
 
     @DeleteMapping("/{id}")

@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/card/**").hasRole("BANK_ROLE")
-                .antMatchers("/profile/**").hasRole("BANK_ROLE")
+                .antMatchers("/profile/**").permitAll()//.hasRole("BANK_ROLE")
                 .antMatchers(HttpMethod.POST, "/transaction").hasAnyRole("BANK_ROLE", "PAYMENT_ROLE")
                 .antMatchers("/transaction/card/**").hasAnyRole("BANK_ROLE", "PAYMENT_ROLE")
                 .antMatchers("/transaction/profile/**").hasAnyRole("BANK_ROLE")

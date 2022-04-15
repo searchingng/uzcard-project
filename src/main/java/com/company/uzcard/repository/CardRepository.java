@@ -6,12 +6,15 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<CardEntity, Long> {
 
     Optional<CardEntity> findByNumber(String number);
+
+    Optional<CardEntity> findByNumberAndExpDate(String number, LocalDate expDate);
 
     List<CardEntity> findByProfileId(Long id);
 

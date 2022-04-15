@@ -26,16 +26,11 @@ public class ProfileService {
         entity.setSurname(dto.getSurname());
         entity.setMiddleName(dto.getMiddleName());
         entity.setBirthDate(dto.getBirthDate());
+        entity.setPhone(dto.getPhone());
         entity.setCreatedAt(LocalDateTime.now());
 
         profileRepository.save(entity);
         return toDto(entity);
-    }
-
-    public ProfileEntity save(ProfileEntity entity){
-
-        profileRepository.save(entity);
-        return entity;
     }
 
     public ProfileEntity get(Long id){
@@ -74,6 +69,10 @@ public class ProfileService {
             entity.setBirthDate(dto.getBirthDate());
         }
 
+        if (dto.getPhone() != null){
+            entity.setPhone(dto.getPhone());
+        }
+
         profileRepository.save(entity);
     }
 
@@ -91,6 +90,7 @@ public class ProfileService {
         dto.setName(entity.getName());
         dto.setSurname(entity.getSurname());
         dto.setMiddleName(entity.getMiddleName());
+        dto.setPhone(entity.getPhone());
         dto.setBirthDate(entity.getBirthDate());
         dto.setCreatedAt(entity.getCreatedAt());
 

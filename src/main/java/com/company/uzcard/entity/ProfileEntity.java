@@ -26,5 +26,7 @@ public class ProfileEntity extends BaseEntity{
 
     private LocalDate birthDate;
 
+    private String phone;
+
 
 }

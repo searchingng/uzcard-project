@@ -14,6 +14,7 @@ public class ProfileDTO {
     private String name;
     private String surname;
     private String middleName;
+    private String phone;
     private LocalDate birthDate;
     private LocalDateTime createdAt;
 

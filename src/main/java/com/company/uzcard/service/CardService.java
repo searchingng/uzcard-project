@@ -89,6 +89,13 @@ public class CardService {
         return cardRepository.findByProfileId(id);
     }
 
+    public CardDTO findByNumberAndExpDate(CardDTO dto){
+        String expDate = dto.getExpDate() + "/01";
+        LocalDate exp = LocalDate.parse(expDate, DateTimeFormatter.ofPattern("MM/yy/dd"));
+        return cardRepository.findByNumberAndExpDate(dto.getNumber(), exp)
+                .map(this::toDto).orElseThrow(() -> new RuntimeException("Such card Not Exist"));
+    }
+
     public String deleteById(Long id){
         cardRepository.deleteById(id);
         return "Successfully Deleted!!!";
